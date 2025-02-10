@@ -1,5 +1,5 @@
-import { TabItem } from '../TabItem/TabItem'
 import { Tab } from '@/types/Tab'
+import { TabItem } from '../TabItem/TabItem'
 import styles from './Tabs.module.scss'
 
 interface TabsProps {

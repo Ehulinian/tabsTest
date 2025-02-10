@@ -7,11 +7,11 @@ import { PostOfficeIcon } from './../icons/PostOfficeIcon'
 import { HelpIcon } from './../icons/HelpIcon'
 import { EinkaufIcon } from './../icons/EinkaufIcon'
 import { RechnIcon } from './../icons/RechnIcon'
-import { Tab } from '@/types/Tab'
 import { AccountIcon } from '@/icons/AccountIcon'
 import { AdministrationIcon } from '@/icons/AdministrationIcon'
 import { WarenbestandIcon } from '@/icons/WarebestandIcon'
 import { AusWahlistenIcon } from '@/icons/AusWahlistenIcon'
+import { Tab } from '@/types/Tab'
 
 export const tabsData: Tab[] = [
 	{

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Tab } from '@/types/Tab'
 import { SvgComponent } from '../SvgComponent'
 import styles from './TabItem.module.scss'
 import { PinIcon } from '@/icons/Pin'
+import { Tab } from '@/types/Tab'
 
 interface TabItemProps {
 	tab: Tab

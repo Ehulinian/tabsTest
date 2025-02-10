@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { Tab } from '@/types/Tab'
 import styles from './TabDropDown.module.scss'
 import { SvgComponent } from '../SvgComponent'
 import { ArrowSelect } from '@/icons/ArrowSelect'
-import { TabItem } from '../TabItem/TabItem'
+import { CloseIcon } from '@/icons/CloseIcon'
+import { Tab } from '@/types/Tab'
 
 interface TabDropdownProps {
 	tabs: Tab[]
@@ -39,18 +39,28 @@ export const TabDropdown: React.FC<TabDropdownProps> = ({ tabs, onDelete }) => {
 			{isOpen && (
 				<ul className={styles.dropDownList}>
 					{filteredTabs.map(tab => (
-						<li key={tab.id} className={styles.dropDownItem}>
-							<TabItem
-								tab={tab}
-								onClick={handleSelectTab}
-								className={styles.dropDownItem}
-								isPinned={false}
-							/>
+						<li
+							key={tab.id}
+							className={styles.dropDownItem}
+							onClick={() => handleSelectTab(tab.url)}
+						>
+							<div className={styles.item}>
+								<SvgComponent width={16} height={16}>
+									<tab.icon />
+								</SvgComponent>
+								<span className={styles.tabTitle}>{tab.label}</span>
+							</div>
+
 							<button
 								className={styles.deleteButton}
-								onClick={() => handleDeleteTab(tab.id)}
+								onClick={e => {
+									e.stopPropagation()
+									handleDeleteTab(tab.id)
+								}}
 							>
-								&times;
+								<SvgComponent width={16} height={16}>
+									<CloseIcon />
+								</SvgComponent>
 							</button>
 						</li>
 					))}
