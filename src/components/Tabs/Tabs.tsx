@@ -5,6 +5,7 @@ import styles from './Tabs.module.scss'
 interface TabsProps {
 	tabs: Tab[]
 	onPin: (tabId: string) => void
+	activeTab: string
 	onClick: (tabUrl: string) => void
 	pinnedTabs: Tab[]
 }
@@ -13,6 +14,7 @@ export const Tabs: React.FC<TabsProps> = ({
 	tabs,
 	onPin,
 	onClick,
+	activeTab,
 	pinnedTabs,
 }) => {
 	return (
@@ -20,6 +22,7 @@ export const Tabs: React.FC<TabsProps> = ({
 			{tabs.map(tab => (
 				<div key={tab.id} className={styles.tabItem}>
 					<TabItem
+						activeTab={activeTab}
 						key={tab.id}
 						tab={tab}
 						onPin={onPin}

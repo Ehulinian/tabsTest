@@ -43,7 +43,6 @@ export const TabDropdown: React.FC<TabDropdownProps> = ({ tabs, onDelete }) => {
 							<TabItem
 								tab={tab}
 								onClick={handleSelectTab}
-								onPin={() => {}}
 								className={styles.dropDownItem}
 								isPinned={false}
 							/>

@@ -1,20 +1,33 @@
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
+import React, { useState, useEffect } from 'react'
 import { Tab } from '@/types/Tab'
 import { tabsData } from '@/data/tabs'
 import { Tabs } from '../Tabs/Tabs'
 import styles from './TabContainer.module.scss'
 import { TabDropdown } from '../TabDropDown/TabDropDown'
+import { useRouter } from 'next/router'
 
 export const TabContainer: React.FC = () => {
 	const [tabs, setTabs] = useState<Tab[]>([])
 	const [pinnedTabs, setPinnedTabs] = useState<Tab[]>([])
+	const [activeTab, setActiveTab] = useState<string>('')
 
 	const router = useRouter()
 
 	useEffect(() => {
 		setTabs(tabsData)
 	}, [])
+
+	useEffect(() => {
+		setTabs(tabsData)
+
+		const activeTabId = window.location.hash.replace('#', '')
+		if (activeTabId) {
+			const tab = tabs.find(tab => tab.id === activeTabId)
+			if (tab) {
+				setActiveTab(tab.id)
+			}
+		}
+	}, [tabs])
 
 	const handleTabPin = (tabId: string) => {
 		setPinnedTabs(prevPinnedTabs => {
@@ -28,8 +41,9 @@ export const TabContainer: React.FC = () => {
 		})
 	}
 
-	const handleTabClick = (tabUrl: string) => {
-		router.push(tabUrl)
+	const handleTabClick = (tabId: string) => {
+		router.push(`#${tabId}`, undefined, { shallow: true })
+		setActiveTab(tabId)
 	}
 
 	const handleDeleteTab = (tabId: string) => {
@@ -39,7 +53,6 @@ export const TabContainer: React.FC = () => {
 		)
 	}
 
-	// Об'єднуємо закріплені та незакріплені вкладки
 	const orderedTabs = [
 		...pinnedTabs,
 		...tabs.filter(
@@ -50,7 +63,8 @@ export const TabContainer: React.FC = () => {
 	return (
 		<div className={styles.tabContainer}>
 			<Tabs
-				tabs={orderedTabs} // Передаємо вкладки в правильному порядку
+				tabs={orderedTabs}
+				activeTab={activeTab}
 				pinnedTabs={pinnedTabs}
 				onPin={handleTabPin}
 				onClick={handleTabClick}

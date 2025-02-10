@@ -7,6 +7,16 @@
 	padding: 16px 20px 16px 20px;
 }
 
+.active {
+	border-top: 2px solid #4690e2;
+	background: #f1f5f8;
+}
+
+.activePinned {
+	border-top: 2px solid #7f858d;
+	background: #f1f5f8;
+}
+
 .tabIcon {
 	display: flex;
 	align-items: center;
@@ -31,6 +41,7 @@
 	position: absolute;
 	top: 100%;
 	left: 50%;
+	transform: translateX(-50%);
 	display: flex;
 	align-items: center;
 	justify-content: center;
