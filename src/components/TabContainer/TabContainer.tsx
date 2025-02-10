@@ -4,6 +4,7 @@ import { Tab } from '@/types/Tab'
 import { tabsData } from '@/data/tabs'
 import { PinnedTabs } from '../PinnedTabs/PinnedTabs'
 import styles from './TabContainer.module.scss'
+import { TabDropdown } from '../TabDropDown/TabDropDown'
 
 export const TabContainer: React.FC = () => {
 	const [tabs, setTabs] = useState<Tab[]>([])
@@ -43,7 +44,7 @@ export const TabContainer: React.FC = () => {
 				onClick={handleTabClick}
 			/>
 
-			{/* {nonPinnedTabs.length > 0 && <TabDropdown tabs={nonPinnedTabs} />} */}
+			{nonPinnedTabs.length > 0 && <TabDropdown tabs={nonPinnedTabs} />}
 		</div>
 	)
 }

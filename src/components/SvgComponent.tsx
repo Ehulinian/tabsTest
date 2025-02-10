@@ -5,17 +5,25 @@ interface SvgComponentProps {
 	height?: number
 	className?: string
 	children?: React.ReactNode
+	viewBox?: string
 }
 
 export const SvgComponent: React.FC<SvgComponentProps> = ({
-	width = 24,
-	height = 24,
+	width,
+	height,
 	className,
 	children,
+	viewBox,
 	...props
 }) => {
 	return (
-		<svg width={width} height={height} className={className} {...props}>
+		<svg
+			width={width}
+			height={height}
+			className={className}
+			viewBox={viewBox}
+			{...props}
+		>
 			{children}
 		</svg>
 	)
