@@ -1,0 +1,67 @@
+[
+	{
+		"id": "1",
+		"label": "Dashboard",
+		"url": "/dashboard"
+	},
+	{
+		"id": "2",
+		"label": "Banking",
+		"url": "/banking"
+	},
+	{
+		"id": "3",
+		"label": "Telefonie",
+		"url": "/telefonie"
+	},
+	{
+		"id": "4",
+		"label": "Accounting",
+		"url": "/accounting"
+	},
+	{
+		"id": "5",
+		"label": "Verkauf",
+		"url": "/verkauf"
+	},
+	{
+		"id": "6",
+		"label": "Statistik",
+		"url": "/statistik"
+	},
+	{
+		"id": "7",
+		"label": "Post Office",
+		"url": "/post-office"
+	},
+	{
+		"id": "8",
+		"label": "Administration",
+		"url": "/administration"
+	},
+	{
+		"id": "9",
+		"label": "Help",
+		"url": "/help"
+	},
+	{
+		"id": "10",
+		"label": "Warenbestand",
+		"url": "/warenbestand"
+	},
+	{
+		"id": "11",
+		"label": "Auswahlisten",
+		"url": "/auswahlisten"
+	},
+	{
+		"id": "12",
+		"label": "Einkauf",
+		"url": "/einkauf"
+	},
+	{
+		"id": "13",
+		"label": "Rechn",
+		"url": "/rechn"
+	}
+]
