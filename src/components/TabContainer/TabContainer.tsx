@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { TabItem } from './TabItem'
-import { TabDropdown } from './TabDropDown'
+import { TabDropdown } from '../TabDropDown/TabDropDown'
 import { Tab } from '@/types/Tab'
-import tabsData from '../data/tabs.json'
+import { tabsData } from '@/data/tabs'
+import { PinnedTabs } from '../PinnedTabs/PinnedTabs'
+import styles from './TabContainer.module.scss'
 
 export const TabContainer: React.FC = () => {
 	const [tabs, setTabs] = useState<Tab[]>([])
@@ -29,7 +30,6 @@ export const TabContainer: React.FC = () => {
 
 	useEffect(() => {
 		setTabs(tabsData)
-		setPinnedTabs([])
 	}, [])
 
 	const nonPinnedTabs = tabs.filter(
@@ -37,21 +37,12 @@ export const TabContainer: React.FC = () => {
 	)
 
 	return (
-		<div className='tab-container'>
-			<div className='tab-bar'>
-				{pinnedTabs.length > 0 ? (
-					pinnedTabs.map(tab => (
-						<TabItem
-							key={tab.id}
-							tab={tab}
-							onPin={handleTabPin}
-							onClick={handleTabClick}
-						/>
-					))
-				) : (
-					<p>No pinned tabs</p>
-				)}
-			</div>
+		<div className={styles.tabContainer}>
+			<PinnedTabs
+				pinnedTabs={tabs}
+				onPin={handleTabPin}
+				onClick={handleTabClick}
+			/>
 
 			{nonPinnedTabs.length > 0 && <TabDropdown tabs={nonPinnedTabs} />}
 		</div>
