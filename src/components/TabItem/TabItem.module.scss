@@ -1,8 +1,10 @@
 .tab {
+	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	gap: 10px;
+	padding: 16px 20px 16px 20px;
 }
 
 .tabIcon {
@@ -15,4 +17,35 @@
 	font-size: 14px;
 	line-height: 16.1px;
 	color: #7f858d;
+}
+
+.hiddenLabel {
+	display: none;
+}
+
+.pinned {
+	font-weight: bold;
+}
+
+.pinButton {
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: none;
+	background: #ffffff;
+	gap: 10px;
+	width: 155px;
+	border: 1px solid #aeb6ce33;
+	color: var(--7-f-858-d-text, #7f858d);
+	padding: 10px 15px;
+	cursor: pointer;
+	font-size: 14px;
+	transition: background-color 0.3s ease;
+
+	&:hover {
+		background-color: #e0e0e0;
+	}
 }

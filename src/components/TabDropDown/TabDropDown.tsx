@@ -3,12 +3,14 @@ import { Tab } from '@/types/Tab'
 import styles from './TabDropDown.module.scss'
 import { SvgComponent } from '../SvgComponent'
 import { ArrowSelect } from '@/icons/ArrowSelect'
+import { TabItem } from '../TabItem/TabItem'
 
 interface TabDropdownProps {
 	tabs: Tab[]
+	onDelete: (tabId: string) => void
 }
 
-export const TabDropdown: React.FC<TabDropdownProps> = ({ tabs }) => {
+export const TabDropdown: React.FC<TabDropdownProps> = ({ tabs, onDelete }) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [selectedTab, setSelectedTab] = useState<string>('')
 
@@ -23,6 +25,10 @@ export const TabDropdown: React.FC<TabDropdownProps> = ({ tabs }) => {
 
 	const filteredTabs = tabs.filter(tab => tab.url !== selectedTab)
 
+	const handleDeleteTab = (tabId: string) => {
+		onDelete(tabId)
+	}
+
 	return (
 		<div className={styles.dropdown}>
 			<div className={styles.selected} onClick={toggleDropdown}>
@@ -33,8 +39,20 @@ export const TabDropdown: React.FC<TabDropdownProps> = ({ tabs }) => {
 			{isOpen && (
 				<ul className={styles.dropDownList}>
 					{filteredTabs.map(tab => (
-						<li key={tab.id} onClick={() => handleSelectTab(tab.url)}>
-							{tab.label}
+						<li key={tab.id} className={styles.dropDownItem}>
+							<TabItem
+								tab={tab}
+								onClick={handleSelectTab}
+								onPin={() => {}}
+								className={styles.dropDownItem}
+								isPinned={false}
+							/>
+							<button
+								className={styles.deleteButton}
+								onClick={() => handleDeleteTab(tab.id)}
+							>
+								&times;
+							</button>
 						</li>
 					))}
 				</ul>

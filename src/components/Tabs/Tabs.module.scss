@@ -1,0 +1,28 @@
+.tabBar {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 48px;
+	background-color: #fefefe;
+}
+
+.tabItem {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	cursor: pointer;
+	transition: background-color 0.2s ease-in-out;
+
+	&:hover {
+		background: #f1f5f8;
+	}
+}
+
+.tab.pinned {
+	background-color: #f0f0f0;
+	border: 2px solid #a0a0a0;
+}
+
+.name.pinnedLabel {
+	font-weight: bold;
+}

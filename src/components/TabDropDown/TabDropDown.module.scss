@@ -29,21 +29,15 @@
 	box-shadow: 0px 16px 30px 0px #7b7f9112;
 }
 
-.dropDownList li {
-	padding: 10px;
-	cursor: pointer;
-	transition: background-color 0.3s;
-	color: #7f858d;
-}
-
-.dropDownList li:hover {
-	color: #343434;
-}
-
-.dropDownList li:active {
-	background-color: #d8d8d8;
-}
-
 .dropDownList::-webkit-scrollbar {
 	display: none;
+}
+
+.dropDownItem {
+	display: flex;
+	color: #7f858d;
+	align-items: flex-start;
+	justify-content: flex-start;
+	cursor: pointer;
+	padding: 15px;
 }
