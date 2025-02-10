@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { TabDropdown } from '../TabDropDown/TabDropDown'
 import { Tab } from '@/types/Tab'
 import { tabsData } from '@/data/tabs'
 import { PinnedTabs } from '../PinnedTabs/PinnedTabs'
@@ -44,7 +43,7 @@ export const TabContainer: React.FC = () => {
 				onClick={handleTabClick}
 			/>
 
-			{nonPinnedTabs.length > 0 && <TabDropdown tabs={nonPinnedTabs} />}
+			{/* {nonPinnedTabs.length > 0 && <TabDropdown tabs={nonPinnedTabs} />} */}
 		</div>
 	)
 }

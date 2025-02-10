@@ -15,7 +15,7 @@ export const TabItem: React.FC<TabItemProps> = ({ tab, onPin, onClick }) => {
 			<SvgComponent width={16} height={16} className={styles.tabIcon}>
 				<tab.icon />
 			</SvgComponent>
-			<span>{tab.label}</span>
+			<span className={styles.name}>{tab.label}</span>
 			{/* <button onClick={() => onPin(tab.id)}>Pin</button> */}
 		</div>
 	)

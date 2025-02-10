@@ -1,10 +1,13 @@
+import { Content } from '@/components/Content/Content'
+import { Header } from '@/components/Header/Header'
 import { TabContainer } from '@/components/TabContainer/TabContainer'
 
 const HomePage = () => {
 	return (
 		<>
-			<div className='header'></div>
+			<Header />
 			<TabContainer />
+			<Content />
 		</>
 	)
 }

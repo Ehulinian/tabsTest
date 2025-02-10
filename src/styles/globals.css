@@ -24,6 +24,8 @@ a {
 	text-decoration: none;
 }
 
-.header {
-	border: 1px solid #aeb6ce33;
+main {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
 }
