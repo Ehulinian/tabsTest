@@ -18,8 +18,6 @@ export const TabContainer: React.FC = () => {
 	}, [])
 
 	useEffect(() => {
-		setTabs(tabsData)
-
 		const activeTabId = window.location.hash.replace('#', '')
 		if (activeTabId) {
 			const tab = tabs.find(tab => tab.id === activeTabId)
@@ -63,6 +61,7 @@ export const TabContainer: React.FC = () => {
 	return (
 		<div className={styles.tabContainer}>
 			<Tabs
+				setTabs={setTabs}
 				tabs={orderedTabs}
 				activeTab={activeTab}
 				pinnedTabs={pinnedTabs}
