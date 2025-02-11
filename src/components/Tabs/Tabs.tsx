@@ -21,6 +21,7 @@ export const Tabs: React.FC<TabsProps> = ({
 	setTabs,
 }) => {
 	const [currentTab, setCurrentTab] = useState<Tab | null>(null)
+	const [drabbingTab, setDraggingTab] = useState<Tab | null>(null)
 
 	const dragStartHandler = (e: React.DragEvent<HTMLDivElement>, tab: Tab) => {
 		if (pinnedTabs.some(pinnedTab => pinnedTab.id === tab.id)) {
@@ -28,29 +29,42 @@ export const Tabs: React.FC<TabsProps> = ({
 			return
 		}
 		setCurrentTab(tab)
+		setDraggingTab(tab)
+		e.currentTarget.classList.add(styles.dragging)
 	}
 
-	const dragEndHandler = (e: React.DragEvent<HTMLDivElement>) => {}
+	const dragEndHandler = (e: React.DragEvent<HTMLDivElement>) => {
+		setDraggingTab(null)
+		e.currentTarget.classList.remove(styles.dragging)
+
+		const allTabs = document.querySelectorAll(`.${styles.tabItem}`)
+		allTabs.forEach(tab => tab.classList.remove(styles.placeholder))
+	}
 
 	const dragOverHandler = (e: React.DragEvent<HTMLDivElement>) => {
 		e.preventDefault()
+		e.currentTarget.classList.add(styles.placeholder)
 	}
 
-	function dropHandler(e: React.DragEvent<HTMLDivElement>, tab: Tab) {
+	const dropHandler = (e: React.DragEvent<HTMLDivElement>, tab: Tab) => {
 		e.preventDefault()
 		if (!currentTab) return
 
-		setTabs(
-			tabs.map(t => {
-				if (t.id === tab.id) {
-					return { ...t, order: currentTab.order }
-				}
-				if (t.id === currentTab.id) {
-					return { ...t, order: tab.order }
-				}
-				return t
-			})
-		)
+		setTimeout(() => {
+			setTabs(
+				tabs.map(t => {
+					if (t.id === tab.id) {
+						return { ...t, order: currentTab.order }
+					}
+					if (t.id === currentTab.id) {
+						return { ...t, order: tab.order }
+					}
+					return t
+				})
+			)
+		}, 100)
+
+		e.currentTarget.classList.remove(styles.placeholder)
 	}
 
 	const sortedTabs = (a: Tab, b: Tab) => {

@@ -4,18 +4,30 @@
 	justify-content: center;
 	height: 48px;
 	background-color: #fefefe;
+	transition: all 0.3s ease;
 }
 
 .tabItem {
 	display: flex;
 	align-items: center;
 	height: 100%;
-	cursor: pointer;
-	transition: background-color 0.2s ease-in-out;
+	cursor: grab;
+	transition: background-color 0.2s ease-in-out, opacity 0.3s ease,
+		transform 0.3s ease;
 
 	&:hover {
 		background: #f1f5f8;
 	}
+}
+
+.tabItem.dragging {
+	opacity: 0.3;
+	transform: scale(0.95);
+	cursor: grabbing;
+}
+
+.tabItem.placeholder {
+	background-color: rgba(0, 0, 0, 0.1);
 }
 
 .tab.pinned {
